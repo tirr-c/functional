@@ -18,15 +18,27 @@ body {
 }
 
 #window {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#window.cover {
+  position: absolute;
+  width: 100vw;
+  height: 100vw;
+  min-width: 100vh;
+  min-height: 100vh;
+  bottom: 0;
+  right: 0;
+}
+
+#window.fit {
   position: relative;
   width: 100vw;
   height: 100vw;
   max-width: 100vh;
   max-height: 100vh;
-
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
 }
 
 iframe {
