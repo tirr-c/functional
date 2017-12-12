@@ -3,21 +3,20 @@ const container = document.getElementById('container');
 const limit = 10;
 
 const search = location.search;
+let seed;
 let currentRec;
 let newSearch;
 if (!search) {
   currentRec = 0;
-  const seed = +(new Date());
-  mt19937.seed(seed);
-  newSearch = (currentRec + 1) + ',' + seed;
+  seed = +(new Date());
 } else {
   const x = search.substr(1);
   const params = x.split(',');
   currentRec = parseInt(params[0]);
-  const seed = parseInt(params[1]);
-  mt19937.seed(seed);
-  newSearch = (currentRec + 1) + ',' + seed;
+  seed = parseInt(params[1]);
 }
+mt19937.seed(seed);
+newSearch = (currentRec + 1) + ',' + seed;
 
 const randBin = Random.integer(0, 255);
 for (let i = 0; i < currentRec; i++) {
