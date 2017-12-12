@@ -37,9 +37,14 @@ if (currentRec <= limit) {
 
 const divs = document.querySelectorAll('#container > div');
 let animationCallback;
+let stacked = -1;
 function cb(e) {
+  stacked += 1;
   if (window.animationCallback) {
-    window.animationCallback();
+    while (stacked > 0) {
+      window.animationCallback();
+      stacked -= 1;
+    }
   }
   for (let i = 0; i < 3; i++) {
     const rgb = [randBin(mt19937), randBin(mt19937), randBin(mt19937)];
