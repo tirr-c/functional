@@ -10,7 +10,6 @@ if (!search) {
   const seed = +(new Date());
   mt19937.seed(seed);
   newSearch = (currentRec + 1) + ',' + seed;
-  container.classList.add('squarify');
 } else {
   const x = search.substr(1);
   const params = x.split(',');
@@ -52,8 +51,6 @@ function cb(e) {
 }
 
 cb();
-if (parent == window) {
-  container.addEventListener('animationiteration', cb, false);
-} else {
+if (parent != window) {
   parent.animationCallback = cb;
 }
