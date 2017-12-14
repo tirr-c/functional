@@ -3,20 +3,11 @@ const container = document.getElementById('container');
 const limit = 10;
 
 const search = location.search;
-let seed;
-let currentRec;
-let newSearch;
-if (!search) {
-  currentRec = 0;
-  seed = +(new Date());
-} else {
-  const x = search.substr(1);
-  const params = x.split(',');
-  currentRec = parseInt(params[0]);
-  seed = parseInt(params[1]);
-}
+const seed = parent.seed;
+const currentRec = parent.currentRec + 1;
 mt19937.seed(seed);
-newSearch = (currentRec + 1) + ',' + seed;
+window.seed = seed;
+window.currentRec = currentRec;
 
 const randBin = Random.integer(0, 255);
 for (let i = 0; i < currentRec; i++) {
@@ -27,7 +18,7 @@ for (let i = 0; i < currentRec; i++) {
 
 if (currentRec <= limit) {
   const elem = document.createElement('iframe');
-  elem.src = '?' + newSearch;
+  elem.src = location.pathname + '?' + currentRec;
   container.appendChild(elem);
 } else {
   const elem = document.createElement('div');
@@ -55,6 +46,4 @@ function cb(e) {
 }
 
 cb();
-if (parent != window) {
-  parent.animationCallback = cb;
-}
+parent.animationCallback = cb;
