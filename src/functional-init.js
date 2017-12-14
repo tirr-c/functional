@@ -1,5 +1,5 @@
 window.seed = +(new Date());
-window.currentRec = -1;
+window.currentRec = 0;
 
 const functional = document.createElement('iframe');
 functional.src = 'functional.html';

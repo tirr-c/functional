@@ -16,7 +16,7 @@ for (let i = 0; i < currentRec; i++) {
   }
 }
 
-if (currentRec <= limit) {
+if (currentRec < limit) {
   const elem = document.createElement('iframe');
   elem.src = location.pathname + '?' + currentRec;
   container.appendChild(elem);
